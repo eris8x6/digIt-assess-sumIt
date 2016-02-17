@@ -1,1 +1,9 @@
 Equation Display
+<div><div class="digit" ng-repeat="op1dig in operand1">{{op1dig}}</div></div>
+<div><div class="digit" ng-repeat="op2dig in operand2">{{op2dig}}</div></div>
+<hr />
+<div><div class="digit" ng-repeat="ansDig in answerDigits">
+        <div ng-drop="true" ng-drop-success="ansDig.onDropSuccess( $data, $event )">
+            {{ansDig.val}}
+        </div>
+    </div></div>

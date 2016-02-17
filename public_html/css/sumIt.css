@@ -1,0 +1,24 @@
+body {
+    font-family: sans-serif;
+    color: black;
+}
+
+.digit {
+    display: inline;
+    position: relative;
+    background-color: bisque;
+    height: 36px;
+    width: 36px;
+    margin: auto;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 32px;
+}
+
+.digit div {
+    display: inline;
+}
+
+[ng-drag].drag-over {
+    border: 1px red;
+}

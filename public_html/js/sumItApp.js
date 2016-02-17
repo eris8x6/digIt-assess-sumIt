@@ -6,9 +6,10 @@
 'use strict';
 /* App Module */
 
-var sumItApp = angular.module('sumItApp', [ 'ngRoute', TODO-other-dependencies ]);
+var sumItApp = angular.module('SumItApp', [ 'ngRoute', 'ngDraggable', 
+    'SumItCtlr', 'Engine' ]);
 
-canDoApp.config(['$routeProvider', '$locationProvider',
+sumItApp.config(['$routeProvider', '$locationProvider',
   function($routeProvider, $locationProvider) {
     $routeProvider.
       when('/', {
