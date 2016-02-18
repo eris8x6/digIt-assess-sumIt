@@ -1,32 +1,32 @@
 <div ng-repeat="equation in equations">
     <div ng-class="equation.orientation">
-        <div class="digit" ng-repeat="op1dig in equation.firstOperand">
+        <div class="digit-small" ng-repeat="op1dig in equation.firstOperand">
             {{op1dig.val}}
         </div>
     </div>
     <div ng-class="equation.orientation">
-        <div class="digit"> + </div>
-        <div class="digit" ng-repeat="op2dig in equation.secondOperand">
+        <div class="digit-small"> + </div>
+        <div class="digit-small" ng-repeat="op2dig in equation.secondOperand">
             {{op2dig.val}}
         </div>
     </div>
     <div ng-class="equation.orientation">
-        <div class="digit"> = </div>
-        <div class="digit" ng-repeat="ansDig in equation.playerAnswerDisplay">
+        <div class="digit-small"> = </div>
+        <div class="digit-small" ng-repeat="ansDig in equation.playerAnswerDisplay">
             <div>
                 {{ansDig.val}}
             </div>
         </div>
-        <div ng-show="equation.isAnswerCorrect" class="digit" style="color: green;">
-            <div>OK</div>
+        <div ng-show="equation.isAnswerCorrect" class="digit-small" style="color: green;">
+            <div> &#x2713; </div>
         </div>
-        <div ng-hide="equation.isAnswerCorrect" class="digit" style="color: red;">
+        <div ng-hide="equation.isAnswerCorrect" class="digit-small" style="color: red;">
             <div>X</div>
         </div>
     </div>
     <div ng-hide="equation.isAnswerCorrect">
-        <div class="digit">Should be </div>
-        <div class="digit" ng-repeat="ansDig in equation.displayAnswer">
+        <div class="digit-small">Should be </div>
+        <div class="digit-small" ng-repeat="ansDig in equation.displayAnswer">
             <div>
                 {{ansDig.val}}
             </div>

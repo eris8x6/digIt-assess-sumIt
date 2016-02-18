@@ -1,15 +1,15 @@
-<div ng-class="equations[ equationIndex ].orientation">
+<div class="numberContainer" ng-class="equations[ equationIndex ].orientation">
     <div class="digit" ng-repeat="op1dig in equations[ equationIndex ].firstOperand">
         {{op1dig.val}}
     </div>
 </div>
-<div ng-class="equations[ equationIndex ].orientation">
+<div class="numberContainer" ng-class="equations[ equationIndex ].orientation">
     <div class="digit"> + </div>
     <div class="digit" ng-repeat="op2dig in equations[ equationIndex ].secondOperand">
         {{op2dig.val}}
     </div>
 </div>
-<div ng-class="equations[ equationIndex ].orientation">
+<div class="numberContainer" ng-class="equations[ equationIndex ].orientation">
     <div class="digit"> = </div>
     <div class="digit" ng-repeat="ansDig in answerDigits">
         <div ng-show="ansDig.show" ng-drop="true" 

@@ -4,9 +4,9 @@ var engine = angular.module( 'Engine', [] );
 
 engine.constant( 'GameConstants', 
     {
-        'EquationCount': 5,
+        'EquationCount': 2, // 5,
         'OperandMin': 10,
-        'OperandMax': 100000
+        'OperandMax': 100 // 100000
     }
 );
 
