@@ -4,18 +4,26 @@ var engine = angular.module( 'Engine', [] );
 
 engine.constant( 'GameConstants', 
     {
-        'EquationCount': 2, // 5,
-        'OperandMin': 10,
-        'OperandMax': 100 // 100000
+        'EquationCount': 5,
+        'OpDigitsMin': 2,
+        'OpDigitsMax': 5
     }
 );
 
-engine.service( 'Utilities', [ 'GameConstants', function( gameConstants ) {
+engine.service( 'Utilities', [ 'GameConstants', function( gConsts ) {
         var utilities = new Object();
         utilities.operandFactory = function() {
+            var opLen, opBase;
             var operand = new Array();
-            operand.value = gameConstants.OperandMin + Math.floor( Math.random() *
-                    ( gameConstants.OperandMax - gameConstants.OperandMin ) );
+            
+            // Distribute the operands evenly among the specified lengths
+            // Because I got tired of entering 5-digit answers
+            
+            opLen = gConsts.OpDigitsMin + Math.floor( Math.random() *
+                    ( gConsts.OpDigitsMax - gConsts.OpDigitsMin ));
+            opBase = Math.pow( 10, ( opLen - 1 ) );
+            operand.value = Math.floor( 9 * opBase * Math.random() + opBase );
+            
             operand.text = operand.value.toString();
             for( var i = 0; i < operand.text.length; i++ ) {
                 var dig = new Object();
