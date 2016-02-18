@@ -1,20 +1,30 @@
-Equation Display
-<div>
-    <div class="digit" ng-repeat="op1dig in operand1">
+<div ng-class="equations[ equationIndex ].orientation">
+    <div class="digit" ng-repeat="op1dig in equations[ equationIndex ].firstOperand">
         {{op1dig.val}}
     </div>
 </div>
-<div>
+<div ng-class="equations[ equationIndex ].orientation">
     <div class="digit"> + </div>
-    <div class="digit" ng-repeat="op2dig in operand2">
+    <div class="digit" ng-repeat="op2dig in equations[ equationIndex ].secondOperand">
         {{op2dig.val}}
     </div>
 </div>
-<hr />
-<div>
+<div ng-class="equations[ equationIndex ].orientation">
+    <div class="digit"> = </div>
     <div class="digit" ng-repeat="ansDig in answerDigits">
-        <div ng-drop="true" ng-drop-success="ansDig.onDropSuccess( $data, $event )">
+        <div ng-show="ansDig.show" ng-drop="true" 
+             ng-drop-success="ansDig.onDropSuccess( $data, $event )">
             {{ansDig.display()}}
         </div>
+    </div>
+</div>
+<div ng-show="equations[ equationIndex ].isComplete">
+    <div class="digit" style="color: green;" ng-show="equations[ equationIndex ].isAnswerCorrect">
+        CORRECT
+    </div>
+</div>
+<div ng-show="equations[ equationIndex ].isComplete">
+    <div class="digit" style="color: red;" ng-hide="equations[ equationIndex ].isAnswerCorrect">
+        WRONG
     </div>
 </div>

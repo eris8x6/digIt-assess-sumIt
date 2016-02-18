@@ -4,9 +4,9 @@ var engine = angular.module( 'Engine', [] );
 
 engine.constant( 'GameConstants', 
     {
-        'ProblemCount': 2,
+        'EquationCount': 5,
         'OperandMin': 10,
-        'OperandMax': 100 // 100000
+        'OperandMax': 100000
     }
 );
 
@@ -30,18 +30,11 @@ engine.service( 'Utilities', [ 'GameConstants', function( gameConstants ) {
         return utilities;
 }]);
 
-engine.service( 'CurrentGame', [ 'Game', function( Game ) {
-        var currentGame = new Object();
-        currentGame.newGame = function() {
-            currentGame.game = new Game();
-        };
-        return currentGame;
-}]);
-
-
 engine.factory( 'Equation', [ 'Utilities', function( utilities ) {
-        return function() {
+        return function( orientation ) {
             var equation = new Object();
+            equation.orientation = orientation;
+            equation.isComplete = false;
             equation.firstOperand = utilities.operandFactory();
             equation.secondOperand = utilities.operandFactory();
             equation.actualAnswer = utilities.drillFunction( 
@@ -54,48 +47,20 @@ engine.factory( 'Equation', [ 'Utilities', function( utilities ) {
                 dig.val = equation.displayAnswer.text.charAt( i );
                 equation.displayAnswer.push( dig );
             }
-            equation.playerAnswerDisplay= function() {
-                var pAD = new Array();
-                var pADText = equation.playerAnswer.toString();
+            equation.submitPlayerAnswer = function( answer ) {
+                this.isComplete = true;
+                this.isAnswerCorrect = ( answer === this.actualAnswer );
+                this.playerAnswerDisplay = new Array();
+                var pADText = answer.toString();
                 for( var i = 0; i < pADText.length; i++ ) {
                     var dig = new Object();
                     dig.val = pADText.charAt( i );
-                    pAD.push( dig );
+                    this.playerAnswerDisplay.push( dig );
                 }
-                return pAD;
-            };
-            equation.isAnswerCorrect = function() {
-                return ( this.playerAnswer === this.actualAnswer );
             };
             equation.corAnsLength = function() {
                 return this.actualAnswer.toString().length;
             };
             return equation;
-        };
-}]);
-
-engine.factory( 'Game', [ 'Equation', 'GameConstants', 
-    function( Equation, gameConstants ) {
-        return function() {
-            var i;
-            var c = false;
-            var game = new Array();
-            for( i = 0; i < gameConstants.ProblemCount; i++ ) {
-                game.push( new Equation() );
-            }
-            game.index = 0;
-            game.next = function() {
-                this.index++;
-                if( this.index >= this.length ) {
-                    c = true;
-                }
-            };
-            game.currentEq = function() {
-                return this[ this.index ];
-            };
-            game.complete = function() {
-                return c;
-            };
-            return game;
         };
 }]);

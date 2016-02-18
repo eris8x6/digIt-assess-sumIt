@@ -3,6 +3,14 @@ body {
     color: black;
 }
 
+.horiz {
+    display: inline;
+}
+
+.vert {
+    display: block;
+}
+
 .digit {
     display: inline;
     position: relative;

@@ -14,13 +14,10 @@ sumItApp.config(['$routeProvider', '$locationProvider',
     $routeProvider.
       when('/', {
         templateUrl: 'partials/mainMenuView.html',
-        controller: 'MainMenuCtlr'
     }).when('/equation/', { 
         templateUrl: 'partials/equationScreenView.html', 
-        controller: 'EquationScreenCtlr'
     }).when('/end/', {
         templateUrl: 'partials/endOfGameView.html',
-        controller: 'EndOfGameCtlr'
     });
 
   $locationProvider.html5Mode(false).hashPrefix('!');
