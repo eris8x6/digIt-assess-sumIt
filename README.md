@@ -2,7 +2,6 @@
 Addition equation drill app
 
 # dev notes
-This works, but in the present version neither the UI or the code are very pretty.
 I ran into a couple of hitches with the angularJS framework that ate quite a few cycles
 and required a significant amount of refactoring and kludging to get it to work:
 
@@ -22,6 +21,12 @@ my hands, this does not work.  However, it appears that my development web serve
 one packaged with NetBeans) is serving the manifest file with an incorrect MIME type.
 I have not had time to investigate this problem further.
 
+As it stands in the current version, the UI looks OK (much better than the previous
+version).  The code is not nearly as clean as I would like it.  In particular, the
+html files easily could be collapsed (the partials that represent the three UI pages
+are nearly empty), and the view code for the equations should be de-duplicated
+between the equation view and the end-of-game view.
+
 # design notes
 There are a few things that work according to spec, but in practice turn out to have
 functional issues for the user.  In a real development situation, I'd certainly want
@@ -34,6 +39,7 @@ of the next equation.
 Because the distribution of equation sizes (i.e. number of digits in the operands)
 is not specified, the simple solution I've coded results in 90% of the operands having
 the maximum number of digits.  This probably isn't what the designer had in mind.
+Actually, I fixed this one because it was driving me bonkers during testing. 
 
 The row of boxes containing digits 0-9 is very wide compared to the vertical-format
 equations, and also only just fits (at a reasonable font size) onto a portrait
