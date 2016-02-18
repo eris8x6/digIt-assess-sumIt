@@ -1,0 +1,18 @@
+CACHE MANIFEST
+# Manifest Version 002
+
+CACHE:
+index.html
+js/sumItApp.js
+js/controllers.js
+js/engine.js
+js/libs/angular.min.js
+js/libs/angular-route.min.js
+js/libs/ngDraggble.js
+css/sumIt.css
+partials/mainMenuView.html
+partials/equationScreenView.html
+partials/endOfGameView.html
+partials/equation.html
+partials/keypad.html
+partials/resultList.html
