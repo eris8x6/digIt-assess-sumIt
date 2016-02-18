@@ -3,6 +3,10 @@ body {
     color: black;
 }
 
+button {
+    font-size: 18px;
+}
+
 .horiz {
     display: inline;
 }
@@ -14,19 +18,42 @@ body {
 .digit {
     display: inline;
     position: relative;
-    background-color: bisque;
     height: 36px;
     width: 36px;
     margin: auto;
+    padding: 4px;
     text-align: center;
     vertical-align: middle;
     font-size: 32px;
+}
+
+.keypad {
+    border-style: solid;
+    border-color: black;
+    border-width: 2px;
+    border-radius: 3px;
+}
+
+.keypad-container {
+    padding-top: 12px;
 }
 
 .digit div {
     display: inline;
 }
 
-[ng-drag].drag-over {
-    border: 1px red;
+[ng-drag]{
+    -moz-user-select: -moz-none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+[ng-drag].dragging{
+    opacity: 0.5;
+}
+
+[ng-drop].drag-enter{
+    border:solid 3px red;
 }
