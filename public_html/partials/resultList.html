@@ -1,1 +1,32 @@
 Result List Display
+<div ng-repeat="equation in equations">
+    <div>
+        <div class="digit" ng-repeat="op1dig in equation.firstOperand">
+            {{op1dig.val}}
+        </div>
+    </div>
+    <div>
+        <div class="digit"> + </div>
+        <div class="digit" ng-repeat="op2dig in equation.secondOperand">
+            {{op2dig.val}}
+        </div>
+    </div>
+    <hr />
+    <div>
+        <div class="digit" ng-repeat="ansDig in equation.playerAnswerDisplay()">
+            <div>
+                {{ansDig.val}}
+            </div>
+        </div>
+    </div>
+    <div>
+        Correct? {{equation.isAnswerCorrect()}}
+    </div>
+    <div ng-hide="equation.isAnswerCorrect()">
+        <div class="digit" ng-repeat="ansDig in equation.displayAnswer">
+            <div>
+                {{ansDig.val}}
+            </div>
+        </div>
+    </div>
+</div>
