@@ -21,3 +21,20 @@ mechanism should work to render the iOS installed web app functional while offli
 my hands, this does not work.  However, it appears that my development web server (the
 one packaged with NetBeans) is serving the manifest file with an incorrect MIME type.
 I have not had time to investigate this problem further.
+
+# design notes
+There are a few things that work according to spec, but in practice turn out to have
+functional issues for the user.  In a real development situation, I'd certainly want
+to pull the design team into the loop and suggest modifications:
+
+There is no way for the user to correct a drag error in the last digit of their
+answer, because completion of the answer boxes triggers immediate scoring and display
+of the next equation.
+
+Because the distribution of equation sizes (i.e. number of digits in the operands)
+is not specified, the simple solution I've coded results in 90% of the operands having
+the maximum number of digits.  This probably isn't what the designer had in mind.
+
+The row of boxes containing digits 0-9 is very wide compared to the vertical-format
+equations, and also only just fits (at a reasonable font size) onto a portrait
+oriented phone screen.  I'd recommend using a 3x4 numeric keypad in those situations.
